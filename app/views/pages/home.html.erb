@@ -1,0 +1,25 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<% if current_user %>
+  <p>Hello <%= current_user.email %> </p>
+  <p>You are a [<%= current_user.role %>] </p>
+  <p>
+      You Have successfully authenticated with your Devise Account.
+      You are now ready to interact with application.
+   </p>
+<%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% else %>
+    <p>You are not logged in.</p>
+    <%= link_to "Sign Up", new_user_registration_path %>
+    <br />
+    <%= link_to "Login", new_user_session_path %>
+<% end %>
+
+
+
+
+<%# or use
+<%= button_to 'Sign out', destroy_user_session_path, method: :delete, form: { class: 'sign-out-form' } %>
+
